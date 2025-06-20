@@ -1,8 +1,9 @@
 
-const form = document.getElementById("registerForm")
 const userName = document.getElementById("userName")
 const saveButton = document.getElementById("save-btn")
 const clearButton = document.getElementById("clear-btn")
+const headerName = document.querySelector('h1')
+const displayName = document.getElementById('display-name')
 
 const date = new Date();
 const hour = date.getHours()
@@ -23,12 +24,12 @@ if (hour >= 5 && hour < 12) {
 saveButton.addEventListener("click", function(event){
     event.preventDefault();
     let userNameValue = userName.value.trim()
-    if (userNameValue === ""){
-        document.querySelector('h1').textContent = "Welcome, User!"
+    if (!userNameValue){
+        headerName.textContent = "Welcome, User!"
     }else {
         localStorage.setItem("userName", userNameValue)
-        document.getElementById("display-name").textContent = userNameValue;
-        document.querySelector('h1').textContent = greeting + ", " + userNameValue;
+        headerName.textContent = userNameValue;
+        headerName.textContent = greeting + ", " + userNameValue;
     }
     
 })
@@ -37,17 +38,17 @@ clearButton.addEventListener("click", function(event){
     event.preventDefault();
     localStorage.clear();
     userName.value = ""
-    document.getElementById("display-name").textContent = "";
-    document.querySelector('h1').textContent = "Welcome, User!";
+    displayName.textContent = "";
+    headerName.textContent = "Welcome, User!";
 })
 
 window.onload = function(){
     let savedUserName = localStorage.getItem("userName")
-    document.getElementById("display-name").textContent = savedUserName;
+    displayName.textContent = savedUserName;
     if (!savedUserName || savedUserName.trim() === "") {
-            document.querySelector('h1').textContent = "Welcome, User!";;
+        headerName.textContent = "Welcome, User!";;
     } else { 
-        document.querySelector('h1').textContent = greeting + ", " + savedUserName;
+        headerName.textContent = greeting + ", " + savedUserName;
     }
 
 }
