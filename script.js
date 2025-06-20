@@ -28,7 +28,7 @@ saveButton.addEventListener("click", function(event){
         headerName.textContent = "Welcome, User!"
     }else {
         localStorage.setItem("userName", userNameValue)
-        headerName.textContent = userNameValue;
+        displayName.textContent = userNameValue;
         headerName.textContent = greeting + ", " + userNameValue;
     }
     
@@ -44,10 +44,10 @@ clearButton.addEventListener("click", function(event){
 
 window.onload = function(){
     let savedUserName = localStorage.getItem("userName")
-    displayName.textContent = savedUserName;
     if (!savedUserName || savedUserName.trim() === "") {
         headerName.textContent = "Welcome, User!";;
     } else { 
+        displayName.textContent = savedUserName;
         headerName.textContent = greeting + ", " + savedUserName;
     }
 
