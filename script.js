@@ -45,7 +45,7 @@ clearButton.addEventListener("click", function(event){
 window.onload = function(){
     let savedUserName = localStorage.getItem("userName")
     if (!savedUserName || savedUserName.trim() === "") {
-        headerName.textContent = "Welcome, User!";;
+        headerName.textContent = "Welcome, User!";
     } else { 
         displayName.textContent = savedUserName;
         headerName.textContent = greeting + ", " + savedUserName;
