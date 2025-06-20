@@ -23,7 +23,6 @@ if (hour >= 5 && hour < 12) {
 saveButton.addEventListener("click", function(event){
     event.preventDefault();
     let userNameValue = userName.value.trim()
-    
     if (userNameValue === ""){
         document.querySelector('h1').textContent = "Welcome, User!"
     }else {
