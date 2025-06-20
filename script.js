@@ -22,11 +22,16 @@ if (hour >= 5 && hour < 12) {
 
 saveButton.addEventListener("click", function(event){
     event.preventDefault();
-    let userNameValue = userName.value
-    localStorage.setItem("userName", userNameValue)
-    document.getElementById("display-name").textContent = userNameValue;
-    document.querySelector('h1').textContent = greeting + ", " + userNameValue;
-
+    let userNameValue = userName.value.trim()
+    
+    if (userNameValue === ""){
+        document.querySelector('h1').textContent = "Welcome, User!"
+    }else {
+        localStorage.setItem("userName", userNameValue)
+        document.getElementById("display-name").textContent = userNameValue;
+        document.querySelector('h1').textContent = greeting + ", " + userNameValue;
+    }
+    
 })
 
 clearButton.addEventListener("click", function(event){
@@ -40,7 +45,7 @@ clearButton.addEventListener("click", function(event){
 window.onload = function(){
     let savedUserName = localStorage.getItem("userName")
     document.getElementById("display-name").textContent = savedUserName;
-    if (savedUserName == null) {
+    if (!savedUserName || savedUserName.trim() === "") {
             document.querySelector('h1').textContent = "Welcome, User!";;
     } else { 
         document.querySelector('h1').textContent = greeting + ", " + savedUserName;
